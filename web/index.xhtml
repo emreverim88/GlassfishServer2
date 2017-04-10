@@ -5,7 +5,36 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+    <h:head>
+        <title>Horay</title>
+        <style>
+            .myImageClass{ background: url("resources/images/background-wallpapers-32.png");}
+        </style>
+    </h:head>
+
+    <h:body styleClass="myImageClass">
+       <f:view>
+          <h:outputLabel value="Hello, world"/>
+           <h:form>
+            <h:commandButton value="Image" action="openMe">Click to see the apple</h:commandButton> <!-- Aynı sayfada kalmak istiyorsak bunu kullanabiliriz  -->
+
+               <h:inputText id="iptxt1" value="#{user.userName}"/>
+               <h:commandButton id="cbtn2" value="bana tıkla" action="second"/>
+                <br/>
+                <br/>
+               <h:inputText id="iptxt2" value="#{user.userName}"/>
+               <h:commandButton id="cbtn3" value="tık">
+                   <f:ajax execute="iptxt2" render="otxt3" />
+
+               </h:commandButton>
+               <br/>
+               <h:outputText id="otxt3" value="#{user.userName}"/>
+
+               <br/>
+               username:  <h:inputText id="iptxt4" value="#{user.userName}"/>
+               password:  <h:inputSecret id="iptxt5" value="#{user.password}"/>
+               <h:commandButton id="somebtn" value="asdfasdf" action="second"/>
+           </h:form>
+       </f:view>
+    </h:body>
 </html>
